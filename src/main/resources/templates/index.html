@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{mainLayout}">
+<head>
+    <title>Student List</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2 class="text-center mb-4">Student List</h2>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>SURNAME</th>
+            <th>EXAM</th>
+            <th>MARK</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}"
+            th:classappend="${student.exam < 50} ? 'fail' : ''">
+            <td th:text="${student.id}" >1</td>
+            <td th:text="${student.name}">Name</td>
+            <td th:text="${student.surname}">Surname</td>
+            <td th:text="${student.exam}">0</td>
+            <td th:text="${student.exam >=90 ? 'A'
+                          : student.exam >=75 ? 'B'
+                          : student.exam >=60 ? 'C'
+                          : student.exam >=50 ? 'D'
+                          : 'F'}" >Mark</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

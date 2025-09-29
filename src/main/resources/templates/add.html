@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{mainLayout}">
+<head>
+    <title>Add Student</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2 class="text-center mb-4">Add Student</h2>
+
+    <form th:action="@{/add}" th:object="${student}" method="post" class="container w-50">
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" th:field="*{name}" class="form-control" placeholder="Enter name" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Surname</label>
+            <input type="text" th:field="*{surname}" class="form-control" placeholder="Enter surname" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Exam</label>
+            <input type="number" th:field="*{exam}" class="form-control" placeholder="Enter exam score" required>
+        </div>
+
+        <button type="submit" class="btn btn-success">Add Student</button>
+        <a th:href="@{ / }" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+</body>
+</html>
