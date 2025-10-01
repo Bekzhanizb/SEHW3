@@ -23,7 +23,7 @@ public class StudentController {
         students.add(new Student(6L, "Morty", "Ben", 84));
         students.add(new Student(7L, "Kelly", "Duisalip", 69));
         students.add(new Student(8L, "Nick", "Smith", 72));
-        students.add(new Student(9L, "Lily", "Park", 95));
+        students.add(new Student(9L, "Peter", "Parker", 95));
         students.add(new Student(10L, "Han", "Gone", 38));
         students.add(new Student(11L, "Billy", "Hope", 86));
         students.add(new Student(12L, "Serious", "Black", 48));

@@ -1,15 +1,16 @@
 package bekezhan.io.homework3.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+import java.time.LocalDate;
+
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Task {
     private Long id;
     private String name;
-    private String deadlineDate;
-    private boolean isCompleted;
+    private LocalDate deadlineDate;
+    private boolean completed;
 }
