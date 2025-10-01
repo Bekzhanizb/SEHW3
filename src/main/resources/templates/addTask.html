@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{tasksLayout}">
+<head>
+    <title>Add Task</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2 class="text-center mb-4">Add Task</h2>
+
+    <form th:action="@{/addTask}" th:object="${task}" method="post" class="container w-50">
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" th:field="*{name}" class="form-control" placeholder="Enter name" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Deadline</label>
+            <input type="date" class="form-control" th:field="*{deadlineDate}">
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" th:field="*{completed}">
+            <label class="form-check-label">Completed</label>
+        </div>
+
+        <button type="submit" class="btn btn-success">Add Task</button>
+        <a th:href="@{/tasks}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+</body>
+</html>

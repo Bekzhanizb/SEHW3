@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -54,6 +55,25 @@ public class TaskController {
     @PostMapping("/tasks/delete")
     public String deleteTask(@RequestParam Long id) {
         tasks.removeIf(t -> t.getId().equals(id));
+        return "redirect:/tasks";
+    }
+
+    @GetMapping("/addTask")
+    public String showAddTaskForm(Model model) {
+        model.addAttribute("task", new Task());
+        return "addTask";
+    }
+
+    @PostMapping("/addTask")
+    public String addTask(@ModelAttribute Task task) {
+        long newId = tasks.isEmpty() ? 1 : tasks.get(tasks.size() - 1).getId() + 1;
+        task.setId(newId);
+
+        if (task.getDeadlineDate() == null) {
+            task.setDeadlineDate(LocalDate.now());
+        }
+
+        tasks.add(task);
         return "redirect:/tasks";
     }
 
